@@ -7,6 +7,7 @@ from event.io.dataset.base import (
 import json
 import os
 import sys
+import tempfile
 from event.arguments.prepare.event_vocab import EmbbedingVocab
 
 from traitlets.config import Configurable
@@ -437,7 +438,7 @@ if __name__ == '__main__':
         output_path = Unicode(help='Output path.').tag(config=True)
 
 
-    debug_file = open('zero_shot_event_debug.txt', 'w')
+    debug_file = tempfile.NamedTemporaryFile(suffix='_zero_shot_event_debug.txt', mode='w', delete=False)
 
     set_basic_log()
     conf = load_mixed_configs()
